@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap');
+@import 'tailwindcss';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #00000d;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #00000d; }
+::-webkit-scrollbar-thumb { background: rgba(123,97,255,0.4); border-radius: 4px; }
+
+/* ─── STAR FIELD ─── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50%       { opacity: 1;    transform: scale(1.2); }
+}
+
+/* ─── SHOOTING STAR ─── */
+@keyframes shoot {
+  0%   { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 1; width: 2px; }
+  70%  { opacity: 0.8; }
+  100% { transform: translateX(700px) translateY(400px) rotate(-35deg); opacity: 0; width: 80px; }
+}
+
+.shooting-star {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  border-radius: 9999px;
+  animation: shoot linear forwards;
+  pointer-events: none;
+}
+
+/* ─── NEBULA ORBS ─── */
+@keyframes nebulaDrift {
+  0%   { transform: translate(0,   0)   scale(1);    opacity: 0.35; }
+  33%  { transform: translate(30px, -20px) scale(1.06); opacity: 0.55; }
+  66%  { transform: translate(-15px, 25px) scale(0.96); opacity: 0.4; }
+  100% { transform: translate(0,   0)   scale(1);    opacity: 0.35; }
+}
+
+.nebula { animation: nebulaDrift ease-in-out infinite; border-radius: 50%; filter: blur(80px); position: absolute; pointer-events: none; }
+
+/* ─── HERO NAME: LETTER REVEAL ─── */
+@keyframes letterReveal {
+  from { opacity: 0; transform: translateY(80px) rotateX(90deg) scale(0.8); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0deg)   scale(1);   filter: blur(0);   }
+}
+.letter {
+  display: inline-block;
+  animation: letterReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── ORBIT RING ─── */
+@keyframes spinOrbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spinOrbitReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+.orbit-ring        { animation: spinOrbit        8s linear infinite; }
+.orbit-ring-slow   { animation: spinOrbit       20s linear infinite; }
+.orbit-ring-reverse{ animation: spinOrbitReverse 12s linear infinite; }
+
+/* ─── FLOATING ─── */
+@keyframes cosmicFloat {
+  0%, 100% { transform: translateY(0px)   rotate(0deg); }
+  33%      { transform: translateY(-14px) rotate(1.5deg); }
+  66%      { transform: translateY(-7px)  rotate(-1deg); }
+}
+.cosmic-float { animation: cosmicFloat ease-in-out infinite; }
+
+/* ─── PULSE GLOW ─── */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(205,255,80,0.25), 0 0 40px rgba(205,255,80,0.08); }
+  50%      { box-shadow: 0 0 32px rgba(205,255,80,0.6),  0 0 80px rgba(205,255,80,0.2);  }
+}
+.pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+@keyframes pulseGlowPurple {
+  0%, 100% { box-shadow: 0 0 16px rgba(123,97,255,0.3); }
+  50%      { box-shadow: 0 0 40px rgba(123,97,255,0.7), 0 0 80px rgba(123,97,255,0.25); }
+}
+.pulse-glow-purple { animation: pulseGlowPurple 3s ease-in-out infinite; }
+
+/* ─── BADGE PING ─── */
+@keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+.ping { animation: ping 1.5s cubic-bezier(0,0,0.2,1) infinite; }
+
+/* ─── TICKER ─── */
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+.ticker-track        { animation: ticker 30s linear infinite; display: flex; width: max-content; }
+.testimonial-track   { animation: ticker 28s linear infinite; width: max-content;  }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-scale {
+  opacity: 0; transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ─── COSMIC GRADIENT TEXT ─── */
+.cosmic-text {
+  background: linear-gradient(135deg, #cdff50 0%, #00d4ff 40%, #7b61ff 70%, #ff61d8 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── CARD HOVER GLOW ─── */
+.space-card {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.space-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 40px rgba(123,97,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
+  border-color: rgba(123,97,255,0.4) !important;
+}
+
+/* ─── ORBIT NUMBER ─── */
+@keyframes dashOrbit {
+  from { stroke-dashoffset: 280; }
+  to   { stroke-dashoffset: 0; }
+}
+.dash-orbit { animation: dashOrbit 2s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ─── FADE-IN ─── */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.animate-fade-in { animation: fadeIn 1s ease both; }
+
+/* ─── STAGGER CHILDREN ─── */
+.stagger > *:nth-child(1) { transition-delay: 0ms; }
+.stagger > *:nth-child(2) { transition-delay: 100ms; }
+.stagger > *:nth-child(3) { transition-delay: 200ms; }
+.stagger > *:nth-child(4) { transition-delay: 300ms; }
+
+/* ─── ASTRONAUT COMPANION ─── */
+@keyframes rocketDescend {
+  0%   { transform: translate(0, -110vh) rotate(0deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Sweeps around name then lands — main entry animation */
+@keyframes rocketSweepAndLand {
+  0%   { transform: translate(10vw, -110vh) rotate(-10deg); }
+  /* Arc left across the hero/name area */
+  18%  { transform: translate(-25vw, -35vh) rotate(-35deg); }
+  /* Orbit left-below the name */
+  32%  { transform: translate(-48vw,   5vh) rotate(-90deg); }
+  /* Swing around below */
+  46%  { transform: translate(-36vw,  28vh) rotate(-155deg); }
+  /* Head back up-right */
+  60%  { transform: translate(-8vw,   8vh) rotate(-225deg); }
+  /* Approach landing from above, rotate upright */
+  72%  { transform: translate(0,     -8vh) rotate(-290deg); }
+  78%  { transform: translate(0,       0)  rotate(0deg); }
+  /* Bounce settle */
+  85%  { transform: translate(0,    -22px) rotate(0deg); }
+  92%  { transform: translate(0,      9px) rotate(0deg); }
+  97%  { transform: translate(0,     -4px) rotate(0deg); }
+  100% { transform: translate(0,       0)  rotate(0deg); }
+}
+
+@keyframes rocketOrbit {
+  0%   { transform: translate(0px, 0px) rotate(0deg); }
+  20%  { transform: translate(-6px, -10px) rotate(-4deg); }
+  40%  { transform: translate(8px, -6px) rotate(3deg); }
+  60%  { transform: translate(4px, 8px) rotate(-2deg); }
+  80%  { transform: translate(-8px, 4px) rotate(4deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
+  35% { transform: scaleY(1.55) scaleX(0.65); opacity: 0.55; }
+  70% { transform: scaleY(0.78) scaleX(1.22); opacity: 0.82; }
+}
+
+/* Continuous organic drift after landing — combines translate + rotate for alive feel */
+@keyframes rocketDrift {
+  0%   { transform: translate(0px, 0px) rotate(0deg); }
+  12%  { transform: translate(-5px, -14px) rotate(-3.5deg); }
+  27%  { transform: translate(7px, -22px) rotate(2.8deg); }
+  41%  { transform: translate(-9px, -9px) rotate(-4.5deg); }
+  55%  { transform: translate(4px, 4px) rotate(1.5deg); }
+  70%  { transform: translate(-7px, -15px) rotate(-2deg); }
+  85%  { transform: translate(9px, -7px) rotate(3.2deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+/* ─── PAGE TRANSITIONS ─── */
+@keyframes pageSlideIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageSlideOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-24px); }
+}
+.page-enter  { animation: pageSlideIn  0.55s cubic-bezier(0.16,1,0.3,1) both; }
+.page-exit   { animation: pageSlideOut 0.3s  cubic-bezier(0.4,0,1,1)    both; }
+
+/* ─── CASE STUDY ─── */
+@keyframes maskReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+.mask-reveal { animation: maskReveal 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-left  { animation: slideFromLeft  0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.slide-right { animation: slideFromRight 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ─── GRID GLOW ─── */
+.cosmic-grid-bg {
+  background-image:
+    linear-gradient(rgba(123,97,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,97,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
