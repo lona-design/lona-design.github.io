@@ -161,8 +161,8 @@ const TOOL_ICONS: Record<string, string> = {
 
 const ToolIcon = ({ name }: { name: string }) => {
   const src = TOOL_ICONS[name];
-  if (!src) return <div sc-camel-class-name="w-5 h-5 rounded-[4px] bg-white/20" />;
-  return <img src={src} alt={name} width={20} height={20} sc-camel-class-name="w-5 h-5 object-contain" />;
+  if (!src) return <div className="w-5 h-5 rounded-[4px] bg-white/20" />;
+  return <img src={src} alt={name} width={20} height={20} className="w-5 h-5 object-contain" />;
 };
 
 // ─── ROCKET SVG ───────────────────────────────────────────────────────────────
