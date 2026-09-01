@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="4.81013" height="11.2051" viewBox="0 0 4.81013 11.2051" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 57">
+<path id="Rectangle 12" d="M1.84096e-07 3.87598e-07L4.80986 3.16761e-07L4.80986 11.205L0 11.205L1.84096e-07 3.87598e-07Z" fill="url(#paint0_linear_0_646)"/>
+<path id="Rectangle 13" d="M4.18262 0.627374C4.18262 0.280885 4.46351 5.1038e-09 4.81 0L4.81 11.205C4.46351 11.205 4.18262 10.9241 4.18262 10.5776L4.18262 0.627374Z" fill="#F05B28"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_646" x1="4.80986" y1="5.60248" x2="1.53041" y2="5.60248" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F05B28" stop-opacity="0.38"/>
+<stop offset="1" stop-color="#F05B28" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
