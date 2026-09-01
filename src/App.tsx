@@ -147,29 +147,22 @@ function Tag({ label }: { label: string }) {
 }
 
 // ─── TOOL ICON ────────────────────────────────────────────────────────────────
+const TOOL_ICONS: Record<string, string> = {
+  "Figma":      `${assetPathPrefix}/figma.png`,
+  "ChatGPT":    `${assetPathPrefix}/chatgpt.png`,
+  "Codex":      `${assetPathPrefix}/codex.png`,
+  "Claude":     `${assetPathPrefix}/claude.png`,
+  "Lovable":    `${assetPathPrefix}/lovable.png`,
+  "Sketch":     `${assetPathPrefix}/sketch.png`,
+  "Framer":     `${assetPathPrefix}/framer.png`,
+  "Figma Make": `${assetPathPrefix}/figma-make.png`,
+  "Notion":     `${assetPathPrefix}/notion.png`,
+};
+
 const ToolIcon = ({ name }: { name: string }) => {
-  switch (name) {
-    case "Figma":
-      return <svg width="20" height="20" viewBox="0 0 38 57" fill="none"><path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1ABCFE"/><path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z" fill="#0ACF83"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="#FF7262"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#F24E1E"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#A259FF"/></svg>;
-    case "Figma Make":
-      return <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="5" fill="#1a1a2e"/><path d="M10 14.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z" fill="#1ABCFE" opacity="0.15"/><path d="M10 14.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z" stroke="#1ABCFE" strokeWidth="1.2"/><path d="M8 10h4M10 8v4" stroke="#A259FF" strokeWidth="1.2" strokeLinecap="round"/><circle cx="10" cy="10" r="1.2" fill="#FF7262"/></svg>;
-    case "ChatGPT":
-      return <svg width="20" height="20" viewBox="0 0 41 41" fill="none"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835 9.964 9.964 0 0 0-6.313-3.926 10.079 10.079 0 0 0-11.386 4.963 9.964 9.964 0 0 0-6.664 4.834 10.079 10.079 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 6.313 3.926 10.08 10.08 0 0 0 11.386-4.963 9.965 9.965 0 0 0 6.664-4.834 10.079 10.079 0 0 0-1.24-11.817zm-17.009 23.799a7.474 7.474 0 0 1-4.801-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 0 0 .655-1.134V19.054l3.366 1.944a.12.12 0 0 1 .066.092v9.299a7.505 7.505 0 0 1-7.487 7.38zM4.392 33.64a7.471 7.471 0 0 1-.894-5.023c.06.036.162.099.237.141l7.964 4.6a1.297 1.297 0 0 0 1.308 0l9.724-5.614v3.888a.12.12 0 0 1-.048.103L14.528 36.6a7.505 7.505 0 0 1-10.136-2.96zM2.678 14.01a7.469 7.469 0 0 1 3.908-3.285c0 .068-.004.19-.004.274v9.201a1.294 1.294 0 0 0 .654 1.132l9.723 5.614-3.366 1.944a.12.12 0 0 1-.114.012L5.43 23.88a7.505 7.505 0 0 1-2.752-9.87zm27.658 6.437l-9.724-5.615 3.367-1.943a.121.121 0 0 1 .114-.012l8.048 4.648a7.498 7.498 0 0 1-1.158 13.528v-9.476a1.293 1.293 0 0 0-.647-1.13zm3.35-5.043c-.059-.037-.162-.099-.236-.141l-7.965-4.6a1.298 1.298 0 0 0-1.308 0l-9.723 5.614v-3.888a.12.12 0 0 1 .048-.103l8.048-4.648a7.498 7.498 0 0 1 11.135 7.763zm-21.063 6.929l-3.367-1.944a.12.12 0 0 1-.065-.092v-9.299a7.497 7.497 0 0 1 12.293-5.756c-.061.033-.168.091-.237.134l-7.965 4.6a1.294 1.294 0 0 0-.654 1.132l-.005 11.225zm1.829-3.943l4.33-2.501 4.332 2.5v4.998l-4.331 2.5-4.331-2.5V18.39z" fill="#74AA9C"/></svg>;
-    case "Claude":
-      return <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="#CC9B7A" opacity="0.15"/><path d="M8.5 16l2-5.5L9 8.5h1.5l1 2.5 1-2.5H14l-1.5 2L14.5 16H13l-1-3-1 3H8.5z" fill="#CC9B7A"/><path d="M6.5 10.5c.5-1.5 1.5-2.5 2.5-2.5" stroke="#CC9B7A" strokeWidth="1" strokeLinecap="round" opacity="0.5"/></svg>;
-    case "Framer":
-      return <svg width="20" height="20" viewBox="0 0 14 21" fill="none"><path d="M0 0h14v7H7L0 0zm0 7h7l7 7H0V7zm0 7h7v7L0 14z" fill="#0099FF"/></svg>;
-    case "Sketch":
-      return <svg width="20" height="20" viewBox="0 0 200 200" fill="none"><path d="M100 10L20 70l80 120 80-120z" fill="#FDB300"/><path d="M20 70l80 40V10z" fill="#EA6C00" opacity="0.8"/><path d="M180 70l-80 40V10z" fill="#FDAD00" opacity="0.9"/><path d="M20 70l80 120 80-120H20z" fill="#FEEEB7"/></svg>;
-    case "Notion":
-      return <svg width="20" height="20" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="12" fill="#fff"/><path d="M18 16c0-4 3-6 7-6h50c4 0 6 2 6 5s-2 5-6 5H25c-4 0-7-2-7-4zm0 22c0-4 3-6 7-6h35c4 0 6 2 6 5s-2 5-6 5H25c-4 0-7-2-7-4zm0 22c0-4 3-6 7-6h50c4 0 6 2 6 5s-2 5-6 5H25c-4 0-7-2-7-4zm0 22c0-4 3-6 7-6h25c4 0 6 2 6 5s-2 5-6 5H25c-4 0-7-2-7-4z" fill="#000"/></svg>;
-    case "Lovable":
-      return <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 19.5C12 19.5 3.5 13.5 3.5 8a4.5 4.5 0 0 1 8.5-2A4.5 4.5 0 0 1 20.5 8c0 5.5-8.5 11.5-8.5 11.5z" fill="#FF3366"/><path d="M12 19.5C12 19.5 3.5 13.5 3.5 8a4.5 4.5 0 0 1 8.5-2" fill="#FF6699" opacity="0.5"/></svg>;
-    case "Codex":
-      return <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#10172a"/><circle cx="12" cy="12" r="5" stroke="#3b82f6" strokeWidth="1.2" opacity="0.4"/><path d="M9.5 10.5L7.5 12l2 1.5M14.5 10.5l2 1.5-2 1.5M13 9l-2 6" stroke="#60a5fa" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>;
-    default:
-      return <div className="w-5 h-5 rounded-[4px] bg-white/20" />;
-  }
+  const src = TOOL_ICONS[name];
+  if (!src) return <div sc-camel-class-name="w-5 h-5 rounded-[4px] bg-white/20" />;
+  return <img src={src} alt={name} width={20} height={20} sc-camel-class-name="w-5 h-5 object-contain" />;
 };
 
 // ─── ROCKET SVG ───────────────────────────────────────────────────────────────
